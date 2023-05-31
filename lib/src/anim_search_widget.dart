@@ -43,6 +43,7 @@ class AnimSearchBar extends StatefulWidget {
   final Function(String) onSubmitted;
   final TextInputAction textInputAction;
   final Function(int) searchBarOpen;
+  final Function(String) onChange;
   const AnimSearchBar({
     Key? key,
 
@@ -92,6 +93,7 @@ class AnimSearchBar extends StatefulWidget {
 
     /// enable/disable the box shadow decoration
     this.boxShadow = true,
+    required this.onChange,
 
     /// can add list of inputformatters to control the input
     this.inputFormatters,
@@ -263,6 +265,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                     cursorWidth: 2.0,
                     onChanged: (value) {
                       textFieldValue = value;
+                      widget.onChange(value);
                     },
                     onSubmitted: (value) => {
                       widget.onSubmitted(value),
@@ -310,7 +313,6 @@ class _AnimSearchBarState extends State<AnimSearchBar>
             Material(
               /// can add custom color or the color will be white
               /// toggle button color based on toggle state
-              color: toggle == 0 ? widget.color : widget.textFieldColor,
               borderRadius: BorderRadius.circular(30.0),
               child: IconButton(
                 splashRadius: 19.0,
@@ -360,6 +362,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                         _con.reverse();
                       }
                     },
+
 
                   );
                   widget.searchBarOpen(toggle);

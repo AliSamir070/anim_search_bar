@@ -32,6 +32,10 @@ class _AppState extends State<App> {
       /// In AnimSearchBar widget, the width, textController, onSuffixTap are required properties.
       /// You have also control over the suffixIcon, prefixIcon, helpText and animationDurationInMilli
       child: AnimSearchBar(
+        searchBarOpen: (number){
+          print(number);
+        },
+
         width: 400,
         textController: textController,
         onSuffixTap: () {
@@ -43,7 +47,9 @@ class _AppState extends State<App> {
         onSubmitted: (String value) {
           debugPrint("onSubmitted value: " + value);
         },
-        textInputAction: TextInputAction.search,
+        textInputAction: TextInputAction.search, onChange: (text ) {
+          print(text);
+      },
       ),
     );
   }
