@@ -261,6 +261,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                     inputFormatters: widget.inputFormatters,
                     focusNode: focusNode,
                     textInputAction: widget.textInputAction,
+                    textAlignVertical: TextAlignVertical.center,
                     cursorRadius: Radius.circular(10.0),
                     cursorWidth: 2.0,
                     onChanged: (value) {
@@ -317,7 +318,6 @@ class _AnimSearchBarState extends State<AnimSearchBar>
               borderRadius: BorderRadius.circular(30.0),
               child: IconButton(
                 splashRadius: 19.0,
-
                 ///if toggle is 1, which means it's open. so show the back icon, which will close it.
                 ///if the toggle is 0, which means it's closed, so tapping on it will expand the widget.
                 ///prefixIcon is of type Icon
