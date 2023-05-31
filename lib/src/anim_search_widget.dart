@@ -313,8 +313,9 @@ class _AnimSearchBarState extends State<AnimSearchBar>
             ///Using material widget here to get the ripple effect on the prefix icon
             Material(
               /// can add custom color or the color will be white
-              /// toggle button color based on toggle state
               color: toggle == 0 ? widget.color : widget.textFieldColor,
+              /// toggle button color based on toggle state
+
               borderRadius: BorderRadius.circular(30.0),
               child: IconButton(
                 splashRadius: 19.0,
