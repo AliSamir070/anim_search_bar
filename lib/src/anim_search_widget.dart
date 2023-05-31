@@ -324,15 +324,11 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                     ? toggle == 1
                         ? Icon(
                             Icons.arrow_back_ios,
-                            color: widget.textFieldIconColor,
                           )
                         : widget.prefixIcon!
                     : Icon(
                         toggle == 1 ? Icons.arrow_back_ios : Icons.search,
                         // search icon color when closed
-                        color: toggle == 0
-                            ? widget.searchIconColor
-                            : widget.textFieldIconColor,
                         size: 20.0,
                       ),
                 onPressed: () {
