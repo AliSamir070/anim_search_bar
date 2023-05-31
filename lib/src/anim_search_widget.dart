@@ -44,11 +44,13 @@ class AnimSearchBar extends StatefulWidget {
   final TextInputAction textInputAction;
   final Function(int) searchBarOpen;
   final Function(String) onChange;
+  final double backHeight;
   const AnimSearchBar({
     Key? key,
 
     /// The width cannot be null
     required this.width,
+    required this.backHeight,
     required this.searchBarOpen,
     /// The textController cannot be null
     required this.textController,
@@ -327,6 +329,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                         ? Icon(
                             Icons.arrow_back_ios,
                             color: widget.textFieldIconColor,
+                            size: widget.backHeight,
                           )
                         : widget.prefixIcon!
                     : Icon(
