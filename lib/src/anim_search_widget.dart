@@ -39,6 +39,7 @@ class AnimSearchBar extends StatefulWidget {
   final Color? textFieldColor;
   final Color? searchIconColor;
   final Color? textFieldIconColor;
+  final double widthRatio;
   final List<TextInputFormatter>? inputFormatters;
   final bool boxShadow;
   final Function(String) onSubmitted;
@@ -49,6 +50,7 @@ class AnimSearchBar extends StatefulWidget {
   const AnimSearchBar({
     Key? key,
     this.suffixKey,
+    required this.widthRatio,
     /// The width cannot be null
     required this.width,
     required this.backHeight,
@@ -257,7 +259,7 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                 child: Container(
                   padding: const EdgeInsets.only(left: 10),
                   alignment: Alignment.center,
-                  width: widget.width / 1.7,
+                  width: widget.width / widget.widthRatio,
                   child: AutoDirection(
                     text: widget.textController.text,
                     child: TextField(
