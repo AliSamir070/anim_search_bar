@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:auto_direction/auto_direction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -257,54 +258,57 @@ class _AnimSearchBarState extends State<AnimSearchBar>
                   padding: const EdgeInsets.only(left: 10),
                   alignment: Alignment.center,
                   width: widget.width / 1.7,
-                  child: TextField(
-                    ///Text Controller. you can manipulate the text inside this textField by calling this controller.
-                    controller: widget.textController,
-                    inputFormatters: widget.inputFormatters,
-                    focusNode: focusNode,
-                    textInputAction: widget.textInputAction,
-                    textAlignVertical: TextAlignVertical.center,
-                    cursorRadius: Radius.circular(10.0),
-                    cursorWidth: 2.0,
-                    onChanged: (value) {
-                      textFieldValue = value;
-                      widget.onChange(value);
-                    },
-                    onSubmitted: (value) => {
-                      widget.onSubmitted(value),
-                      unfocusKeyboard(),
-                      setState(() {
-                        toggle = 0;
-                      }),
-                      widget.textController.clear(),
-                    },
-                    onEditingComplete: () {
-                      /// on editing complete the keyboard will be closed and the search bar will be closed
-                      unfocusKeyboard();
-                      setState(() {
-                        toggle = 0;
-                      });
-                    },
+                  child: AutoDirection(
+                    text: widget.textController.text,
+                    child: TextField(
+                      ///Text Controller. you can manipulate the text inside this textField by calling this controller.
+                      controller: widget.textController,
+                      inputFormatters: widget.inputFormatters,
+                      focusNode: focusNode,
+                      textInputAction: widget.textInputAction,
+                      textAlignVertical: TextAlignVertical.center,
+                      cursorRadius: Radius.circular(10.0),
+                      cursorWidth: 2.0,
+                      onChanged: (value) {
+                        textFieldValue = value;
+                        widget.onChange(value);
+                      },
+                      onSubmitted: (value) => {
+                        widget.onSubmitted(value),
+                        unfocusKeyboard(),
+                        setState(() {
+                          toggle = 0;
+                        }),
+                        widget.textController.clear(),
+                      },
+                      onEditingComplete: () {
+                        /// on editing complete the keyboard will be closed and the search bar will be closed
+                        unfocusKeyboard();
+                        setState(() {
+                          toggle = 0;
+                        });
+                      },
 
-                    ///style is of type TextStyle, the default is just a color black
-                    style: widget.style != null
-                        ? widget.style
-                        : TextStyle(color: Colors.black),
-                    cursorColor: Colors.black,
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.only(bottom: 5),
-                      isDense: true,
-                      floatingLabelBehavior: FloatingLabelBehavior.never,
-                      labelText: widget.helpText,
-                      labelStyle: TextStyle(
-                        color: Color(0xff5B5B5B),
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      alignLabelWithHint: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide.none,
+                      ///style is of type TextStyle, the default is just a color black
+                      style: widget.style != null
+                          ? widget.style
+                          : TextStyle(color: Colors.black),
+                      cursorColor: Colors.black,
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.only(bottom: 5),
+                        isDense: true,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        labelText: widget.helpText,
+                        labelStyle: TextStyle(
+                          color: Color(0xff5B5B5B),
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        alignLabelWithHint: true,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
                     ),
                   ),
